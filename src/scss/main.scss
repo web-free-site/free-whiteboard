@@ -1,0 +1,279 @@
+:root {
+  --wf-bg: #f4f6f5;
+  --wf-ink: #15201b;
+  --wf-accent: #1e6b52;
+  --wf-muted: #5a6b63;
+  --wf-border: rgba(21, 32, 27, 0.12);
+  color-scheme: light;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--wf-bg);
+  color: var(--wf-ink);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--wf-accent);
+}
+
+.site {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid var(--wf-border);
+  position: relative;
+  z-index: 10;
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 8px;
+  background: var(--wf-accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand__text small {
+  color: var(--wf-muted);
+  font-size: 0.8rem;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.95rem;
+
+  a {
+    text-decoration: none;
+    color: var(--wf-ink);
+    &:hover {
+      color: var(--wf-accent);
+    }
+  }
+}
+
+.site-body {
+  flex: 1;
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+  min-height: 0;
+}
+
+.site-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.site-sidebar {
+  display: none;
+  width: 180px;
+  flex-shrink: 0;
+  padding: 1rem 0.5rem;
+
+  @media (min-width: 1100px) {
+    display: block;
+  }
+}
+
+.site-footer {
+  margin-top: auto;
+  padding: 1.25rem 1rem 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--wf-border);
+  background: #fff;
+
+  .muted {
+    color: var(--wf-muted);
+    font-size: 0.85rem;
+  }
+}
+
+.site--editor {
+  .site-body {
+    max-width: none;
+    padding: 0;
+  }
+
+  .site-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .site-footer {
+    padding-bottom: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+.whiteboard-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.whiteboard-wrap {
+  flex: 1;
+  min-height: calc(100vh - 200px);
+  height: calc(100dvh - 200px);
+  position: relative;
+  isolation: isolate;
+}
+
+.whiteboard-wrap .excalidraw {
+  --ui-font: system-ui, sans-serif;
+}
+
+.ad-slot {
+  text-align: center;
+  margin: 0.5rem auto;
+  max-width: 100%;
+
+  &__label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--wf-muted);
+    margin-bottom: 0.15rem;
+  }
+
+  &__frame {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.ad-header,
+.ad-home-top {
+  padding: 0.25rem 0;
+}
+
+.ad-mobile-sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.97);
+  border-top: 1px solid var(--wf-border);
+  z-index: 8;
+  padding: 0.35rem;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.site--editor .ad-mobile-sticky {
+  display: none;
+}
+
+.legal-page,
+.guide-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+
+  h1 {
+    margin-top: 0;
+  }
+
+  .faq dl {
+    margin: 0;
+  }
+
+  .faq dt {
+    font-weight: 600;
+    margin-top: 1rem;
+  }
+
+  .faq dd {
+    margin: 0.25rem 0 0;
+    color: var(--wf-muted);
+  }
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.6rem 1.1rem;
+  background: var(--wf-accent);
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.seo-prerender {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ad-smartlink {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 389px) {
+  .nav {
+    font-size: 0.85rem;
+  }
+
+  .whiteboard-wrap {
+    min-height: calc(100dvh - 240px);
+  }
+}

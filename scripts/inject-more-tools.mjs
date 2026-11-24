@@ -7,8 +7,8 @@ const HUB = `https://web-free.site/?ref=${REF}`
 const CLOUDFLARE =
   '<!-- Cloudflare Web Analytics --><script defer src=\'https://static.cloudflareinsights.com/beacon.min.js\' data-cf-beacon=\'{"token": "3e2f5f96ab32442ebb6e6f650615b58a"}\'></script><!-- End Cloudflare Web Analytics -->'
 
-const link = (host, label) =>
-  `<li><a href="https://${host}.web-free.site/?ref=${REF}">${label}</a></li>`
+const link = (host, label, path = '/') =>
+  `<li><a href="https://${host}.web-free.site${path}?ref=${REF}">${label}</a></li>`
 
 const moreToolsHtml = `<aside id="wf-more-tools" class="wf-more-tools" aria-labelledby="wf-mt-title">
   <style>
@@ -63,7 +63,7 @@ const moreToolsHtml = `<aside id="wf-more-tools" class="wf-more-tools" aria-labe
       ${link('free-logo-maker', 'Free Logo Maker')}
     </ul></div>
     <div class="wf-mt-cat"><h3>Calculators &amp; currency</h3><ul>
-      ${link('free-online-calculator', 'Free Online Calculator')}
+      ${link('free-online-calculator', 'Free Online Calculator', '/en/')}
       ${link('free-currency-converter', 'Free Currency Converter')}
       ${link('free-unit-converter', 'Free Unit Converter')}
       ${link('free-loan-calculator', 'Free Loan Calculator')}

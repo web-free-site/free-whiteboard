@@ -1,4 +1,5 @@
 import { SITE } from '../site'
+import homeSeo from './homeSeo.json'
 
 export interface SeoPage {
   path: string
@@ -18,27 +19,10 @@ export const SEO_PAGES: SeoPage[] = [
     title: 'Free Whiteboard — online drawing board | No sign-up',
     description:
       'Free online whiteboard in your browser. Draw, add shapes and text, pan and zoom, undo, export PNG or SVG. No account, no live collaboration — files stay on your device.',
-    h1: 'Free Whiteboard — draw online with no sign-up',
+    h1: homeSeo.h1,
     keywords: 'free whiteboard, online whiteboard, drawing board, export PNG, no sign up',
-    paragraphs: [
-      'Free Whiteboard gives you a full-height canvas for sketches, diagrams, and lesson notes without creating an account. Everything runs locally in the browser using the open-source Excalidraw editor.',
-      'Use pen, shapes, arrows, and text. Pan and zoom for detail work, undo mistakes, and export PNG or SVG when you are done. Optional localStorage keeps your last board on this device only.',
-      'There is no multiplayer room, no Firebase backend, and no upload to our servers — ideal for classrooms, brainstorming, and quick wireframes on slow networks.',
-    ],
-    faq: [
-      {
-        q: 'Is this whiteboard really free?',
-        a: 'Yes. There is no subscription and no login required.',
-      },
-      {
-        q: 'Where is my drawing stored?',
-        a: 'In your browser localStorage until you clear site data or export a file.',
-      },
-      {
-        q: 'Can I collaborate live with others?',
-        a: 'No. This build disables live collaboration; export an image and share it instead.',
-      },
-    ],
+    paragraphs: homeSeo.intro,
+    faq: homeSeo.faq,
   },
   {
     path: '/online-whiteboard-no-sign-up',

@@ -1,11 +1,23 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { homeFaqJsonLd, homeSeoHtml, homeWebAppJsonLd } from './home-seo-html.mjs'
 
 const HOST = 'https://free-whiteboard.web-free.site'
 const dist = path.resolve('dist')
 const baseHtml = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
 
+const homeDescription =
+  'Free online whiteboard in your browser. Draw with Excalidraw tools, auto-save locally, export PNG or SVG. No account required.'
+
 const pages = [
+  {
+    path: '/',
+    title: 'Free Whiteboard — online drawing board | No sign-up',
+    description: homeDescription,
+    h1: null,
+    snippet: null,
+    home: true,
+  },
   {
     path: '/online-whiteboard-no-sign-up',
     title: 'Online whiteboard with no sign-up — draw in your browser',
@@ -69,6 +81,36 @@ function escapeMeta(s) {
   return s.replace(/&/g, '&amp;').replace(/"/g, '&quot;')
 }
 
+function jsonLdScript(data) {
+  return `<script type="application/ld+json">${JSON.stringify(data)}</script>`
+}
+
+function stripJsonLdType(html, type) {
+  return html.replace(
+    /<script type="application\/ld\+json">([\s\S]*?)<\/script>\s*/gi,
+    (block, body) => {
+      try {
+        const data = JSON.parse(body)
+        if (data['@type'] === type) return ''
+      } catch {
+        if (body.includes(`"@type": "${type}"`) || body.includes(`"@type":"${type}"`)) return ''
+      }
+      return block
+    },
+  )
+}
+
+function injectHomeJsonLd(html) {
+  html = stripJsonLdType(html, 'FAQPage')
+  html = stripJsonLdType(html, 'WebApplication')
+  const webApp = jsonLdScript(homeWebAppJsonLd())
+  const faq = jsonLdScript(homeFaqJsonLd())
+  return html.replace(
+    /<meta name="theme-color"[^>]*>/,
+    (tag) => `${tag}\n    ${webApp}\n    ${faq}`,
+  )
+}
+
 function buildPage(page) {
   const url = HOST + (page.path === '/' ? '/' : page.path)
   let html = baseHtml
@@ -95,8 +137,17 @@ function buildPage(page) {
     /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/,
     `<meta property="og:description" content="${escapeMeta(page.description)}" />`,
   )
-  const seoBlock = `<section id="seo-prerender" class="seo-prerender"><h1>${page.h1}</h1>${page.snippet}</section>`
-  html = html.replace('<div id="root"></div>', `${seoBlock}\n    <div id="root"></div>`)
+  if (page.home) {
+    html = injectHomeJsonLd(html)
+    const seoBlock = homeSeoHtml()
+    html = html.replace(
+      '<div id="root"></div>',
+      `<div id="root"></div>\n    <noscript>${seoBlock}</noscript>`,
+    )
+  } else {
+    const seoBlock = `<section id="seo-prerender" class="seo-prerender"><h1>${page.h1}</h1>${page.snippet}</section>`
+    html = html.replace('<div id="root"></div>', `${seoBlock}\n    <div id="root"></div>`)
+  }
   if (!html.includes('/wf-ads.js')) {
     html = html.replace('</body>', '    <script src="/wf-ads.js" defer></script>\n  </body>')
   }
@@ -104,6 +155,10 @@ function buildPage(page) {
 }
 
 for (const page of pages) {
+  if (page.path === '/') {
+    fs.writeFileSync(path.join(dist, 'index.html'), buildPage(page))
+    continue
+  }
   const dir = path.join(dist, page.path.replace(/^\//, ''))
   fs.mkdirSync(dir, { recursive: true })
   fs.writeFileSync(path.join(dir, 'index.html'), buildPage(page))

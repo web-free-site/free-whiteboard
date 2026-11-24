@@ -3,6 +3,7 @@ import { Excalidraw } from '@excalidraw/excalidraw'
 import type { ExcalidrawInitialDataState } from '@excalidraw/excalidraw/types'
 import '@excalidraw/excalidraw/index.css'
 import { SITE } from '../site'
+import { HomeSeoSection } from '../components/HomeSeoSection'
 
 type SavedScene = {
   elements?: readonly unknown[]
@@ -94,6 +95,7 @@ export const HomePage: FC = () => {
           }}
         />
       </div>
+      <HomeSeoSection />
     </section>
   )
 }

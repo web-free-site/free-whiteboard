@@ -1,0 +1,44 @@
+{
+  "h1": "Free Whiteboard — Draw Online, No Sign-Up",
+  "intro": [
+    "Free Whiteboard is a free online whiteboard that runs entirely in your web browser. It is built on the open-source MIT Excalidraw package, so you get a familiar drawing surface with pens, shapes, arrows, eraser, and text without installing software or creating an account.",
+    "Open the page and start sketching immediately. Pan and zoom around the canvas, undo mistakes, toggle light or dark theme, and change the background color when you need contrast. Your latest board is saved automatically in this browser’s localStorage on your device only—nothing is uploaded to our servers and there is no cloud sync.",
+    "When you are ready to share or keep a copy, use the export menu in the editor to download PNG or SVG files to your computer or phone. There is no live collaboration room in this build; export an image and send it through email, chat, or your learning platform instead.",
+    "The tool is meant for quick diagrams, lesson notes, brainstorming sessions, and simple wireframes when you want a lightweight canvas that works on classroom laptops, home PCs, and mobile browsers."
+  ],
+  "howToSteps": [
+    "Visit free-whiteboard.web-free.site—the drawing canvas loads at the top of the page with no sign-up screen.",
+    "Choose a tool from the toolbar (pen, shapes, arrow, text, eraser) and draw on the infinite canvas; scroll or pinch to pan and zoom.",
+    "Your work is saved automatically in localStorage on this device. Use undo or clear the canvas from the editor menu if you want a fresh start.",
+    "Open the main menu (top left), choose Export image, pick PNG for slides or SVG for vector editing, and save the file to your device.",
+    "Close the tab and return later—the last board on this browser is restored until you clear site data or export elsewhere."
+  ],
+  "useCases": [
+    "Teaching and tutoring—explain steps on a shared screen and export frames as PNG for slide decks or handouts.",
+    "Brainstorming—map ideas, flows, and mind sketches in a meeting without account setup.",
+    "Technical diagrams—sketch architecture, network layouts, or process flows with shapes and arrows.",
+    "UI wireframes—block out screens and layouts quickly before moving to a design tool."
+  ],
+  "faq": [
+    {
+      "q": "Is Free Whiteboard free to use?",
+      "a": "Yes. The editor is free with no subscription and no payment required."
+    },
+    {
+      "q": "Do I need to sign up or log in?",
+      "a": "No. There is no account system—open the site and start drawing."
+    },
+    {
+      "q": "Where are my drawings saved?",
+      "a": "They are stored in your browser’s localStorage on this device until you clear site data or replace the board. We do not store your canvas on our servers."
+    },
+    {
+      "q": "Can I export my board as PNG or SVG?",
+      "a": "Yes. Use the export option in the editor menu to download PNG or SVG files to your device."
+    },
+    {
+      "q": "Does it work on phones and tablets?",
+      "a": "Yes. Modern mobile browsers can draw, pan, pinch-zoom, and export, though a larger screen is more comfortable for detailed work."
+    }
+  ]
+}

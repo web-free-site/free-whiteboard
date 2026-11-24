@@ -163,10 +163,44 @@ a {
 
 .whiteboard-wrap {
   flex: 1;
-  min-height: calc(100vh - 200px);
-  height: calc(100dvh - 200px);
+  min-height: min(55vh, calc(100dvh - 200px));
+  height: min(55vh, calc(100dvh - 200px));
   position: relative;
   isolation: isolate;
+}
+
+.home-seo {
+  flex-shrink: 0;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 2rem;
+
+  h1 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    margin-top: 1.25rem;
+    font-size: 1.15rem;
+  }
+
+  p,
+  ol,
+  ul {
+    color: var(--wf-muted);
+  }
+
+  .faq dt {
+    font-weight: 600;
+    margin-top: 1rem;
+    color: var(--wf-ink);
+  }
+
+  .faq dd {
+    margin: 0.25rem 0 0;
+    color: var(--wf-muted);
+  }
 }
 
 .whiteboard-wrap .excalidraw {
